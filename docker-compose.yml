@@ -1,0 +1,25 @@
+services:
+  postgres_db:
+    image: postgres:15
+    container_name: travel_postgres
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: travel_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init/postgres:/docker-entrypoint-initdb.d
+
+  mysql_db:
+    image: mysql:8.0
+    container_name: travel_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: travel_db
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init/mysql:/docker-entrypoint-initdb.d
