@@ -15,6 +15,8 @@ NC='\033[0m' # No Color
 
 # Tạo file CSV nếu chưa tồn tại
 if [ ! -f "$CSV_FILE" ]; then
+    mkdir -p "$RESULTS_DIR"
+    mkdir -p "$CONFIGS_DIR"
     echo "Timestamp,TPS,Latency_Avg_ms,Init_Conn_Time_ms,Trans_Processed,Scaling_Factor,Clients,Threads,Duration_s,Config_File" > "$CSV_FILE"
 fi
 
